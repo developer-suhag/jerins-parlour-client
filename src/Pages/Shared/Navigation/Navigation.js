@@ -18,12 +18,15 @@ import * as React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navigation.css";
 import logo from "../../../images/logo.png";
+import useAuth from "../../../hooks/useAuth";
 
 // const drawerWidth = 240;
 
 function Navigation(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const { user } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -104,6 +107,15 @@ function Navigation(props) {
                       Dashboard
                     </NavLink>
                   </li>
+                  {user?.email && (
+                    <li>
+                      <img
+                        style={{ width: 50, borderRadius: "50%" }}
+                        src={user.photoURL}
+                        alt=""
+                      />
+                    </li>
+                  )}
                 </ul>
               </nav>
             </Box>
@@ -145,8 +157,8 @@ function Navigation(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar></Toolbar>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, mb: 3 }}>
+        {/* <Toolbar></Toolbar> */}
       </Box>
     </Box>
   );

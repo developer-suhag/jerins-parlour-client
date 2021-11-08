@@ -26,3 +26,7 @@ h5,
 h6 {
   font-weight: 500;
 }
+.jerins-btn {
+  background: #f63e7b !important;
+  color: #fff;
+}
