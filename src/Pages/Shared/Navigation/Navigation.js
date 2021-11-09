@@ -19,6 +19,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navigation.css";
 import logo from "../../../images/logo.png";
 import useAuth from "../../../hooks/useAuth";
+import { Button } from "@mui/material";
 
 // const drawerWidth = 240;
 
@@ -26,7 +27,7 @@ function Navigation(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -107,6 +108,19 @@ function Navigation(props) {
                       Dashboard
                     </NavLink>
                   </li>
+                  <li>
+                    <NavLink className="nav-link" to="/appointment">
+                      Appointment
+                    </NavLink>
+                  </li>
+                  {user?.email && (
+                    <li>
+                      <Button onClick={logOut} variant="text">
+                        {" "}
+                        Log Out
+                      </Button>
+                    </li>
+                  )}
                   {user?.email && (
                     <li>
                       <img

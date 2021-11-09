@@ -5,9 +5,11 @@ import { CssBaseline } from "@mui/material";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import AuthProvider from "./context/AuthProvider";
+import Appointment from "./Pages/Appointment/Appointment/Appointment";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home/Home";
 import Login from "./Pages/Login/Login/Login";
+import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import Navigation from "./Pages/Shared/Navigation/Navigation";
 
 function App() {
@@ -30,6 +32,9 @@ function App() {
               <Route exact path="/dashboard">
                 <Dashboard></Dashboard>
               </Route>
+              <PrivateRoute path="/appointment">
+                <Appointment></Appointment>
+              </PrivateRoute>
             </Switch>
           </Router>
         </AuthProvider>
